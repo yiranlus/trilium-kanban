@@ -11,7 +11,7 @@
 			"title": "Kanban Integration",
 			"notePosition": 260,
 			"prefix": null,
-			"isExpanded": true,
+			"isExpanded": false,
 			"type": "text",
 			"mime": "text/html",
 			"attributes": [],
@@ -305,7 +305,7 @@
 									"title": "handleEvents",
 									"notePosition": 20,
 									"prefix": null,
-									"isExpanded": false,
+									"isExpanded": true,
 									"type": "code",
 									"mime": "application/javascript;env=frontend",
 									"attributes": [],
@@ -802,7 +802,7 @@
 							"title": "Kanban View",
 							"notePosition": 10,
 							"prefix": null,
-							"isExpanded": false,
+							"isExpanded": true,
 							"type": "render",
 							"mime": "",
 							"attributes": [
@@ -864,7 +864,7 @@
 									"title": "Not Started",
 									"notePosition": 10,
 									"prefix": null,
-									"isExpanded": false,
+									"isExpanded": true,
 									"type": "book",
 									"mime": "",
 									"attributes": [
@@ -1135,6 +1135,47 @@
 								},
 								{
 									"isClone": false,
+									"noteId": "ktVohxN3chKs",
+									"notePath": [
+										"z1AXNTSrDAXB",
+										"8FV2x65GbuuW",
+										"OSoa0Tul60AO",
+										"ktVohxN3chKs"
+									],
+									"title": "Attachments",
+									"notePosition": 50,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "book",
+									"mime": "",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "viewType",
+											"value": "list",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-file",
+											"isInheritable": false,
+											"position": 20
+										},
+										{
+											"type": "label",
+											"name": "kanbanAttachment",
+											"value": "",
+											"isInheritable": false,
+											"position": 30
+										}
+									],
+									"dataFileName": "Attachments.dat",
+									"attachments": []
+								},
+								{
+									"isClone": false,
 									"noteId": "yVgQIIAWr1eU",
 									"notePath": [
 										"z1AXNTSrDAXB",
@@ -1143,7 +1184,7 @@
 										"yVgQIIAWr1eU"
 									],
 									"title": "Description",
-									"notePosition": 50,
+									"notePosition": 60,
 									"prefix": null,
 									"isExpanded": false,
 									"type": "text",
@@ -1272,7 +1313,7 @@
 					"title": "eventHandlers",
 					"notePosition": 30,
 					"prefix": null,
-					"isExpanded": false,
+					"isExpanded": true,
 					"type": "text",
 					"mime": "text/html",
 					"attributes": [],
