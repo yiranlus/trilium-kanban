@@ -16,6 +16,7 @@ module.exports = async function(context) {
         const $card = $(card);
         const text = $card.text();
         const {
+            tags,
             kanbanstyle,
             iconclass
         } = $card.data();
@@ -26,13 +27,38 @@ module.exports = async function(context) {
             $card.addClass("kanban-style-" + kanbanstyle);
         }
         
+        var $cardTitle = $('<div/>', {class: "kanban-item-title"});
         if (showCardIcons && iconclass) {
             const $iconSpan = $('<span/>', {class: iconclass})
-            $card.append($iconSpan);
+            $cardTitle.append($iconSpan);
         }
         
         const $title = $('<span/>', {text});
         
-        $card.append($title);
+        $cardTitle.append($title);
+        $card.append($cardTitle);
+        
+        // adding tags
+        tags.split(',').forEach(tag => {
+            if (!tag) return;
+
+            var bgcolor = "lightgreen";
+
+            if (tag === "important" || tag === "urgent") {
+                bgcolor = "orangered";
+            } else if (tag === "medium") {
+                bgcolor = "orange";
+            } else if (tag === "maybe") {
+                bgcolor = "lightblue";
+            }
+
+            $card.append($("<span/>", {
+                class: "kanban-tag",
+                text: tag,
+                css: {
+                    backgroundColor: bgcolor
+                }
+            }));
+        });
     });
 }
