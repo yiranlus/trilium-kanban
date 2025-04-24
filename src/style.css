@@ -4,6 +4,45 @@
     display: none;
 }
 
+.page-break {
+    page-break-after: always;
+}
+
+.printed-content .page-break:after,
+.printed-content .page-break > * {
+    display: none !important;
+}
+
+.ck-content li p {
+    margin: 0 !important;
+}
+
+.admonition {
+    --accent-color: var(--card-border-color);
+    border: 1px solid var(--accent-color);
+    box-shadow: var(--card-box-shadow);
+    background: var(--card-background-color);
+    border-radius: 0.5em;
+    padding: 1em;
+    margin: 1.25em 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.admonition p:last-child {
+    margin-bottom: 0;
+}
+
+.admonition p, h2 {
+    margin-top: 0;
+}
+
+.admonition.note { --accent-color: #69c7ff; }
+.admonition.tip { --accent-color: #40c025; }
+.admonition.important { --accent-color: #9839f7; }
+.admonition.caution { --accent-color: #ff2e2e; }
+.admonition.warning { --accent-color: #e2aa03; }
+
 /*
  * CKEditor 5 (v41.0.0) content styles.
  * Generated on Fri, 26 Jan 2024 10:23:49 GMT.
@@ -522,16 +561,19 @@
 /* @ckeditor/ckeditor5-code-block/theme/codeblock.css */
 .ck-content pre {
     padding: 1em;
-    color: hsl(0, 0%, 20.8%);
-    background: hsla(0, 0%, 78%, 0.3);
-    border: 1px solid hsl(0, 0%, 77%);
-    border-radius: 2px;
     text-align: left;
     direction: ltr;
     tab-size: 4;
     white-space: pre-wrap;
     font-style: normal;
     min-width: 200px;
+    border: 0px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+}
+.ck-content pre:not(.hljs) {
+    color: hsl(0, 0%, 20.8%);    
+    background: hsla(0, 0%, 78%, 0.3);
 }
 /* @ckeditor/ckeditor5-code-block/theme/codeblock.css */
 .ck-content pre code {
