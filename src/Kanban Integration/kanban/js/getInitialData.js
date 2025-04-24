@@ -3,12 +3,14 @@ module.exports = async function() {
 
     return await api.runOnBackend(kanbanNoteId => {
         const kanbanNote = api.getNote(kanbanNoteId);
-        const boards = kanbanNote.getChildNotes();
+        const boards = kanbanNote.getChildNotes().filter(board => {
+            return !board.hasLabel('kanbanDescription');
+        });;
 
         // sort boards by "sortOrder"
         const sortedBoards = boards.sort((a, b) => {
-            aSortOrder = a.getLabelValue("sortOrder");
-            bSortOrder = b.getLabelValue("sortOrder");
+            const aSortOrder = a.getLabelValue("sortOrder");
+            const bSortOrder = b.getLabelValue("sortOrder");
             
             return aSortOrder - bSortOrder;
         });
@@ -18,8 +20,8 @@ module.exports = async function() {
             
             // sort cards by "sortOrders"
             const sortedCards = cards.sort((a, b) => {
-                aSortOrder = a.getLabelValue("sortOrder");
-                bSortOrder = b.getLabelValue("sortOrder");
+                const aSortOrder = a.getLabelValue("sortOrder");
+                const bSortOrder = b.getLabelValue("sortOrder");
                 
                 return aSortOrder - bSortOrder;
             });
@@ -32,6 +34,7 @@ module.exports = async function() {
                     {
                         id: card.noteId,
                         title: card.title,
+                        tags: card.getLabelValues("tag"),
                         kanbanStyle: card.getLabelValue("kanbanStyle"),
                         iconClass: card.getLabelValue("iconClass")
                     }

@@ -11,7 +11,9 @@ module.exports = async function(context) {
     // get label values of boards
     const boardsData = await api.runOnBackend(kanbanNoteId => {
         const kanbanNote = api.getNote(kanbanNoteId);
-        const boards = kanbanNote.getChildNotes();
+        const boards = kanbanNote.getChildNotes().filter(board => {
+            return !board.hasLabel('kanbanDescription');
+        });
         const labels = ["iconClass", "kanbanStyle"];
         return boards.map(board => {
             var output = {
