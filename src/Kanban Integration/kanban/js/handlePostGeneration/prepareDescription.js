@@ -20,9 +20,9 @@ module.exports = async function(context) {
     
     
     $('#kanban-description').html(descriptionData.content);
-    $('#kanban-description').click(() => {
-        helpers.navigateToNote(descriptionData.id);
-    });
+    //$('#kanban-description').click(() => {
+    //    helpers.navigateToNote(descriptionData.id);
+    //});
     $('#kanban-description').scroll(() => {
     });
 }
