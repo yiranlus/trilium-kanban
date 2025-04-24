@@ -30,15 +30,21 @@ module.exports = async function() {
                 id: board.noteId,
                 title: board.title,
                 iconClass: board.getLabelValue("iconClass"),
-                item: sortedCards.map(card => (
-                    {
+                item: sortedCards.map(card => {
+					const htmlString = card.getContent();
+
+					const checkedCount = (htmlString.match(/<input[^>]*type="checkbox"[^>]*checked[^>]*>/g) || []).length;
+					const uncheckedCount = (htmlString.match(/<input[^>]*type="checkbox"(?![^>]*checked)[^>]*>/g) || []).length;
+                    
+                    return {
                         id: card.noteId,
                         title: card.title,
                         tags: card.getLabelValues("tag"),
+                        progress: (uncheckedCount?`${checkedCount}/${uncheckedCount}`:null),
                         kanbanStyle: card.getLabelValue("kanbanStyle"),
                         iconClass: card.getLabelValue("iconClass")
                     }
-                ))
+                })
             };
         });
     }, [kanbanNoteId]);

@@ -17,6 +17,7 @@ module.exports = async function(context) {
         const text = $card.text();
         const {
             tags,
+            progress,
             kanbanstyle,
             iconclass
         } = $card.data();
@@ -34,8 +35,19 @@ module.exports = async function(context) {
         }
         
         const $title = $('<span/>', {text});
-        
         $cardTitle.append($title);
+        
+        console.log("progress: ", progress);
+        if (progress) {
+        	const $progress = $('<span/>', {
+                text: `(${progress})`,
+                css: {
+                    marginLeft: "0.5em"
+                }
+            });
+        	$cardTitle.append($progress);
+        }
+        
         $card.append($cardTitle);
         
         // adding tags
@@ -56,7 +68,8 @@ module.exports = async function(context) {
                 class: "kanban-tag",
                 text: tag,
                 css: {
-                    backgroundColor: bgcolor
+                    backgroundColor: bgcolor,
+                    color: "black"
                 }
             }));
         });
