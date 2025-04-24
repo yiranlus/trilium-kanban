@@ -1,4 +1,4 @@
-const disableCheck = false;
+const disableCheck = true;
 const currentVersion = "0.4";
 const githubApiEndpoint = "https://api.github.com/repos/CyrilLeblanc/trilium-kanban/releases/latest";
 
