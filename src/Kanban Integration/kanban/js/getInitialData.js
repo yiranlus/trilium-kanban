@@ -4,7 +4,7 @@ module.exports = async function() {
     return await api.runOnBackend(kanbanNoteId => {
         const kanbanNote = api.getNote(kanbanNoteId);
         const boards = kanbanNote.getChildNotes().filter(board => {
-            return !board.hasLabel('kanbanDescription');
+            return !(board.hasLabel('kanbanDescription') || board.hasLabel('kanbanAttachment'));
         });;
 
         // sort boards by "sortOrder"
